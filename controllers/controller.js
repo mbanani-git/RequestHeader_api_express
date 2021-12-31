@@ -3,13 +3,12 @@ const os = require("os");
 const whoAmI = (req, res) => {
   try {
     const info = {
-      ipaddress: os.networkInterfaces()["Wi-Fi"][1]["address"],
+      // ipaddress: os.networkInterfaces()["Wi-Fi"][1]["address"],
+      ipaddress: req.ip,
       language: req.headers["accept-language"],
       software: req.headers["user-agent"],
     };
-    let a = os.networkInterfaces();
-    console.log(a);
-    res.status(201).json({ ...info, a });
+    res.status(201).json({ ...info });
   } catch (error) {
     console.log(error);
   }
